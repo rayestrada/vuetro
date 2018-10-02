@@ -14,12 +14,25 @@ var tasksdata = [
   }
 ];
 
+// Initalizes a vue component and properties
+Vue.component('heading', {
+  template: `<div>
+    <h1>{{ hello }}</h1>
+    <input class="form-control" type="text" v-model="hello"/>
+  </div>`,
+
+  data: function () {
+    return {
+      hello: 'Hello World!'
+    }
+  }
+});
+
 // Initalizes the vue instance and properties
 var app = new Vue({
   el: '#app',
 
   data: {
-    hello: 'Hello World!',
     tasks: tasksdata
   },
 

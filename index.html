@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Vuetro 0.2</title>
+	<title>Vuetro 0.3</title>
   <!-- Add Bootstrap Styling -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <style type="text/css">
+    [v-cloak] { display: none; }
+  </style>
 </head>
 <body>
 
-<div class="container" id="app">
-  <h1>{{ hello }}</h1>
+<div class="container" id="app" vcloak>
 
-  <input class="form-control" type="text" v-model="hello"/>
+  <heading></heading>
 
   <h2>Laundry Tasks</h2>
   <table class="table">
