@@ -28,12 +28,13 @@ Vue.component('heading', {
   }
 });
 
-// Initalizes the vue instance and properties
-var app = new Vue({
-  el: '#app',
+Vue.component('laundry', {
+  template: '#laundry',
 
-  data: {
-    tasks: tasksdata
+  data: function () {
+    return {
+      tasks: tasksdata
+    }
   },
 
   methods: {
@@ -48,4 +49,9 @@ var app = new Vue({
       return total;
     }
   }
+});
+
+// Initalizes the vue instance and properties
+var app = new Vue({
+  el: '#app'
 });

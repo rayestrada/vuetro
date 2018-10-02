@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Vuetro 0.3</title>
+	<title>Vuetro 0.4</title>
   <!-- Add Bootstrap Styling -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <style type="text/css">
@@ -14,27 +14,33 @@
 
   <heading></heading>
 
-  <h2>Laundry Tasks</h2>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>#</th>
-      <th>Task Name</th>
-      <th>Duration</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr v-for="(task, index) in tasks">
-      <td>{{ index + 1 }}</td>
-      <td>{{ task.title }}</td>
-      <td>{{ task.time }}hr</td>
-    </tr>
-    </tbody>
-
-  </table>
-  <p><strong>Total Time:</strong> {{ totalTime(tasks) }} hours</p>
+  <laundry></laundry>
 
 </div>
+
+<template id="laundry">
+  <div v-if="tasks.length">
+    <h2>Laundry Tasks</h2>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Task Name</th>
+        <th>Duration</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="(task, index) in tasks">
+        <td>{{ index + 1 }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.time }}hr</td>
+      </tr>
+      </tbody>
+
+    </table>
+    <p><strong>Total Time:</strong> {{ totalTime(tasks) }} hours</p>
+  </div>
+</template>
 
 <!-- Vue js development version, includes helpful console warnings -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
