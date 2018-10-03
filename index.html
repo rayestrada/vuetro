@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Vuetro 0.4</title>
+	<title>Vuetro 0.5</title>
   <!-- Add Bootstrap Styling -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <style type="text/css">
@@ -13,7 +13,9 @@
 <div class="container" id="app" vcloak>
 
   <heading></heading>
-
+  <br />
+  <create></create>
+  <br />
   <laundry></laundry>
 
 </div>
@@ -33,7 +35,7 @@
       <tr v-for="(task, index) in tasks">
         <td>{{ index + 1 }}</td>
         <td>{{ task.title }}</td>
-        <td>{{ task.time }}hr</td>
+        <td class="form-inline"><input class="form-control" type="number" v-model="task.time" step="0.25" min="0" max="6"/> hr</td>
       </tr>
       </tbody>
 

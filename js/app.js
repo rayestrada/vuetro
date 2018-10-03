@@ -18,12 +18,51 @@ var tasksdata = [
 Vue.component('heading', {
   template: `<div>
     <h1>{{ hello }}</h1>
-    <input class="form-control" type="text" v-model="hello"/>
+    <!--<input class="form-control" type="text" v-model="hello"/>-->
   </div>`,
 
   data: function () {
     return {
-      hello: 'Hello World!'
+      hello: 'Your Task List'
+    }
+  }
+});
+
+// Initalizes a vue component and properties
+Vue.component('create', {
+  template: `<div class="form-inline">
+    <h3>Create a new Task</h3>
+    <label for="">Task Name</label>
+    <input class="form-control" type="text" v-model="newtaskname" />
+    <label for="">Duration</label>
+    <input class="form-control" type="number" v-model="newtaskdur" step="0.25" min="0" max="6"/> hr
+    <button type="submit" class="btn btn-default" v-on:click="createTheTask">Add Task</button>
+  </div>`,
+
+  data: function () {
+    return {
+      tasks: tasksdata,
+      newtaskname: '',
+      newtaskdur: ''
+    }
+  },
+
+  methods: {
+    createTheTask: function () {
+      //validate todo
+      if (!this.newtaskname || !this.newtaskdur){
+        alert("Please enter a complete task!");
+        return
+      }
+
+      var data = {
+        title: this.newtaskname,
+        time: this.newtaskdur
+      };
+
+      this.tasks.push(data);
+      this.newtaskname = '';
+      this.newtaskdur = '';
     }
   }
 });
@@ -44,7 +83,7 @@ Vue.component('laundry', {
       var i;
 
       for (i = 0; i < tasks.length; i++) {
-        total = total + tasks[i].time;
+        total = total + Number(tasks[i].time);
       }
       return total;
     }
