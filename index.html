@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Vuetro 0.5</title>
+	<title>Vuetro 0.6</title>
   <!-- Add Bootstrap Styling -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <style type="text/css">
@@ -22,6 +22,13 @@
 
 <template id="laundry">
   <div v-if="tasks.length">
+    <div class="form-inline">
+      <h3>Filter by Title</h3>
+      <label>Search</label>
+      <input type="text" v-model.lazy="searchName">
+    </div>
+    <br />
+    <img v-bind:src="searchName + '.jpg'" v-if="searchName == 'idea'" />
     <h2>Laundry Tasks</h2>
     <table class="table">
       <thead>
@@ -32,15 +39,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="(task, index) in tasks">
+      <tr v-for="(task, index) in filterNames">
         <td>{{ index + 1 }}</td>
         <td>{{ task.title }}</td>
         <td class="form-inline"><input class="form-control" type="number" v-model="task.time" step="0.25" min="0" max="6"/> hr</td>
       </tr>
       </tbody>
-
     </table>
-    <p><strong>Total Time:</strong> {{ totalTime(tasks) }} hours</p>
+    <p v-show="searchName == ''"><strong>Total Time:</strong> {{ totalTime(tasks) }} hours</p>
   </div>
 </template>
 

@@ -72,7 +72,18 @@ Vue.component('laundry', {
 
   data: function () {
     return {
-      tasks: tasksdata
+      tasks: tasksdata,
+      searchName: ''
+    }
+  },
+
+  // provides a computed value back
+  computed: {
+    filterNames() {
+      var self = this;
+      return self.tasks.filter(function (task) {
+        return task.title.toLowerCase().indexOf(self.searchName.toLowerCase()) !== -1;
+      });
     }
   },
 
